@@ -231,7 +231,19 @@ public class Picture extends SimplePicture
   
   public void mirrorGull()
   {
-      
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    
+    for (int row = 236; row < 318; row++)
+    {
+      for (int col = 241; col < 342; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][ 289 - row +289];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
   }
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the

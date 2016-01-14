@@ -78,7 +78,7 @@ public class PictureTester
   
   public static void testMirrorGull()
   {
-      Picture gull = new Picture("gull.jpg");
+      Picture gull = new Picture("seagull.jpg");
       gull.explore();
       gull.mirrorGull();
       gull.explore();
