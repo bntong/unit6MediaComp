@@ -99,6 +99,13 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test the keepOnlyBlue */
+  public static void testKeepOnlyBlue()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.keepOnlyBlue();
+      beach.explore();
+  }
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
