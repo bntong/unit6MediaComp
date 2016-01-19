@@ -112,6 +112,24 @@ public class Picture extends SimplePicture
       } 
   }
   
+  /** Method to negate all pixels in a picture */
+  public void negate()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+          for (Pixel pixelObj : rowArray)
+          {
+              int red = pixelObj.getRed();
+              int green = pixelObj.getGreen();
+              int blue = pixelObj.getBlue();
+              pixelObj.setRed(255 - red);
+              pixelObj.setGreen(255 - green);
+              pixelObj.setBlue(255 - blue);
+          }
+      } 
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -130,6 +148,26 @@ public class Picture extends SimplePicture
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
+  }
+  
+  /** Method that copies a region of the specified source Picture object into a Picture object at 
+   * the specified location */
+  public void cropAndCopy( Picture sourcePicture, int startSourceRow, int endSourceRow, 
+         int startSourceCol, int endSourceCol,
+         int startDestRow, int startDestCol )
+  {
+     Pixel[][] source = sourcePicture.getPixels2D();
+     Pixel[][] dest = new Pixel[startSourceRow - endSourceRow][startSourceCol - endSourceCol];
+     Pixel[][] destPixel = null;
+     Pixel sourcePixel = null;
+     for(int row = 0; row < dest.length; row++)
+     {
+        for(int col = 0; col < dest[0].length; col++)
+        {
+            sourcePixel = source[row][col];
+            destPixel[row][col].setColor(sourcePixel.getColor()); 
+        }
+     }
   }
   
   public void mirrorVerticalRightToLeft()
@@ -259,6 +297,7 @@ public class Picture extends SimplePicture
       }
     } 
   }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
