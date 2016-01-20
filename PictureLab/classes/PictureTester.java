@@ -26,7 +26,16 @@ public class PictureTester
       beach.explore();
   }
     
-  
+  /** Method to test crop and copy */
+  public static void testCropAndCopy()
+  {
+      Picture beach = new Picture("beach.jpg");
+      Picture seagull = new Picture("seagull.jpg");
+      beach.explore();
+      seagull.explore();
+      beach.cropAndCopy(seagull, 226, 330, 234, 350, 10, 100);
+      beach.explore();
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
