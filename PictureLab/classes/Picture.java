@@ -164,11 +164,16 @@ public class Picture extends SimplePicture
      {
         for(Integer col = startSourceCol; col < endSourceCol; col++)
         {            
-            dest[row][col].setColor(source[row][col].getColor()); 
-        }
+            dest[row][col].setColor(source[row][col].getColor());       
      }
+    }
   }
   
+  /** Method that scales a picture down by fifty percent */
+  public void scaleByHalf()
+  {
+      
+  }
   public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -331,6 +336,7 @@ public class Picture extends SimplePicture
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
+    /*
     Picture flower1 = new Picture("flower1.jpg");
     Picture flower2 = new Picture("flower2.jpg");
     this.copy(flower1,0,0);
@@ -343,6 +349,10 @@ public class Picture extends SimplePicture
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
+    */
+    Picture beach = new Picture("beach.jpg");
+    this.copy(beach,0,0);
+    this.write("myCollage.jpg");
   }
   
   
