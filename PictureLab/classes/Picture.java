@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+import java.awt.Color;
 
 /**
  * A class that represents a picture.  This class inherits from 
@@ -169,11 +170,7 @@ public class Picture extends SimplePicture
     }
   }
   
-  /** Method that scales a picture down by fifty percent */
-  public void scaleByHalf()
-  {
-      
-  }
+
   public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -332,7 +329,27 @@ public class Picture extends SimplePicture
       }
     }   
   }
-
+ 
+  /** Method to turn the pictures into shades of grey */
+  public void grayScale()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      
+  }
+  
+  public void sepia()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+          for (Pixel pixelObj : rowArray)
+          {
+              pixelObj.setRed((pixelObj.getRed()+pixelObj.getBlue()+pixelObj.getGreen())/3);
+              pixelObj.setGreen((pixelObj.getRed()+pixelObj.getBlue()+pixelObj.getGreen())/3);
+              pixelObj.setBlue((pixelObj.getRed()+pixelObj.getBlue()+pixelObj.getGreen())/3);
+          }
+      } 
+  }
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
@@ -350,8 +367,16 @@ public class Picture extends SimplePicture
     this.mirrorVertical();
     this.write("collage.jpg");
     */
-    Picture beach = new Picture("beach.jpg");
-    this.copy(beach,0,0);
+    Picture beach1 = new Picture("beach.jpg");
+    Picture beach2 = new Picture("beach.jpg");
+    Picture beach3 = new Picture("beach.jpg");
+    Picture beach4 = new Picture("beach.jpg");
+    beach1.negate();
+    beach2.grayScale();
+    this.copy(beach1,0,0);
+    this.copy(beach2,480,0);
+    this.copy(beach3,0,640);
+    this.copy(beach4,480,640);
     this.write("myCollage.jpg");
   }
   
