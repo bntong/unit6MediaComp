@@ -172,8 +172,18 @@ public class Picture extends SimplePicture
   /** Method that scales a picture down by fifty percent */
   public void scaleByHalf()
   {
-      
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel[][] pixels2 = this.getPixels2D();
+      int scalePercent = 2;
+      for(int row = 0; row < pixels.length; row+)
+      {
+          for(int col = 0; col < pixels[0].length; col+=2)
+          {
+              pixels2[row][col].setColor(pixels[row][col].getColor());
+          }
+      }
   }
+  
   public void mirrorVerticalRightToLeft()
   {
     Pixel[][] pixels = this.getPixels2D();

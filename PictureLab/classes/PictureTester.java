@@ -36,6 +36,15 @@ public class PictureTester
       beach.cropAndCopy(seagull, 226, 330, 234, 350, 10, 100);
       beach.explore();
   }
+  
+  /** Method to test Scale by half */
+  public static void testScaleByHalf()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.scaleByHalf();
+      beach.explore();
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
